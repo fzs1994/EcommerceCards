@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Bid Cards
+	</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="flp/flipclock.css">
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+	<style type="text/css">
+
+		body, html{
+			background-color: #eee;
+			font-family: 'Open Sans', sans-serif;
+		}
+
+		
+
+		/*countdown*/
+
+
+		ul.bid-timer {
+		  list-style: none;
+		  padding: 0;
+		  display: block;
+		  text-align: right;
+		  height: 65px;
+		  color: #fff;
+		  margin: 0;
+    	  margin-top: -13px;
+		}
+
+		ul.bid-timer li { display: inline-block; }
+
+		ul.bid-timer li span {
+		  font-size: 80px;
+		  font-weight: 600;
+		  line-height: 80px;
+		}
+
+		ul.bid-timer li.seperator {
+		  font-size: 80px;
+		  line-height: 70px;
+		  vertical-align: top;
+		}
+
+		ul.bid-timer li p {
+		  color: #a7abb1;
+		  font-size: 25px;
+		}
+
+
+		ul.bid-timer{
+		    
+		}
+
+
+		ul.bid-timer li span{
+			font-size: 20px !important;
+
+		}
+
+		ul.bid-timer li.seperator{
+			font-size: 22px !important;
+		    line-height: 75px !important;
+		}
+
+		/*Product Cards New*/
+
+
+		/* 
+		 * Product Page 3 
+		 */
+
+
+		.product-container {
+		  background-color: #fff;
+		  height: 355px;
+		  overflow: hidden;
+		  position: relative;
+		  margin-bottom: 20px;
+		}
+
+		.tag-sale {
+		  background-color: #4fdaa4;
+		  width: 86px;
+		  height: 98px;
+		  position: absolute;
+		  color: #fff;
+		  right: -41px;
+		  z-index: 9;
+		  top: -44px;
+		  transform: rotate(137deg);
+		}
+
+		.tag-sale::before {
+		  content: "SALE";
+		  color: #fff;
+		  font-weight: bold;
+		  display: block;
+		  transform-origin: top center;
+		  transform: rotate(222.5deg) translateX(-28px) translateY(-37px);
+		}
+
+		.product-description {
+		  background-color: #F7F7F7;
+		  border-top: 1px solid #EFEFEF;
+		  padding: 10px 20px;
+		  color: #797979;
+		}
+
+		.product-image {
+		  /*padding: 20px;*/
+		  height: 260px;
+		  position: relative;
+		  overflow: hidden;
+		  transition: 1s;
+		}
+
+		.product-name h1{
+		  font-style: normal;
+		  overflow-x: hidden;
+		  white-space: nowrap;
+		  text-overflow: ellipsis;
+		}
+
+		.product-link {
+		  position: absolute;
+		  background: #fff;
+		  width: 100px;
+		  height: 100px;
+		  color: #4FDAA4;
+		  border-radius: 50%;
+		  font-size: 22px;
+		  text-align: center;
+		  padding: 35px 0;
+		  line-height: 25px;
+		  left: calc(50% - 50px);
+		  top: calc(50% - 50px);
+		  opacity: 0;
+		  transition: 1s;
+		  
+		}
+
+		.product-link:hover {
+		  text-decoration: none;
+		  color: #4FDAA4;
+		}
+
+
+		.hover-link {
+		  background-color: #4FDAA4;
+		  position: absolute;
+		  left: 0;
+		  top: 0;
+		  opacity: 0;
+		  width: 100%;
+		  height: 100%;
+		  transition: 0.5s;
+		}
+
+		.product-image img {
+		  /*width: 100%;*/
+		  height: 100%;
+		  margin-left: -40px;
+		}
+
+		.timer-here{
+		  padding: 0 15px;
+		  background-color: #292929;
+		}
+
+		.product-description h1 {
+		  font-size: 23px;
+		  margin-bottom: 5px;
+		  margin-top: 0;
+		  display: inline-block;
+		  width: 100%;
+		}
+
+		.product-description p {
+		  color: #C4C4C4;
+		}
+
+		.product-description .price {
+		  display: inline-block;
+		  width: 20%;
+		  font-size: 23px;
+		  text-align: right;
+		  font-weight: bold;
+		  color: #2DD493;
+		  margin-bottom: 5px;
+		}
+
+		.product-option {
+		  border-top: 1px solid #D2D2D2;
+		}
+
+		.product-option h3 {
+		  font-size: 16px;
+		  font-weight: bold;
+		  margin-bottom: 3px;
+		}
+
+		.product-option .product-color ul {
+		  list-style-type: none;
+		  padding: 0;
+		}
+
+		.product-option .product-color li {
+		  display: inline-block;
+		  width: 15px;
+		  height: 15px;
+		}
+
+		.product-color li.red {
+		  background-color: #F75375;
+		}
+		.product-color li.blue {
+		  background-color: #53A0F7;
+		}
+		.product-color li.green {
+		  background-color: #59CFAF;
+		}
+		.product-color li.gray {
+		  background-color: #C7C7C7;
+		}
+		.product-color li.black {
+		  background-color: #4E5156;
+		}
+		.product-color li.dark-blue {
+		  background-color: #2060AF;
+		}
+
+		.product-container:hover {
+		  box-shadow: 0px 10px 25px -2px rgba(0,0,0,0.36);
+		}
+
+		.product-container:hover .product-image {
+		  height: 155px;
+		  transition: 1s;
+		  /*padding: 10px;*/
+		}
+		.product-container:hover .product-option {
+		  display: block;
+		}
+		.product-container:hover .hover-link {
+		  opacity: 0.5;
+		}
+		.product-container:hover .product-link {
+		  opacity: 1;
+		}
+
+		.product-link:hover {
+		  -webkit-animation: hovering 1000ms linear both;
+		  animation: hovering 1000ms linear both;
+		}
+
+
+		.fa-play{
+		  color: #2DD493;
+		}
+
+		.fa-stop{
+		  color: #f44236;
+		}
+
+		.fa-plus-square{
+		  color: #008080;
+		}
+
+		button{
+		  margin-left: 0;
+		}
+
+
+
+
+
+
+
+
+
+
+		.stats-card{
+			background-color: #fff;
+			box-shadow: 5px 5px 15px #aaa;
+		}
+
+		@media(max-width: 640px){
+			.stats-card{
+				margin-top: 15%;
+			}
+		}
+
+		.stats{
+			background-color: #292929;
+			padding: 10px;
+			color: #fff;
+			text-align: center;
+		}
+
+		.round-stat{
+			margin: auto;
+			border: 2px solid #fff;
+			border-radius: 555555px;
+			width: 70px;
+			height: 70px;
+			padding: 25px 10px;
+		}
+
+		h3.round-stat{
+			font-size: 18px;
+		}
+
+		small{
+			font-size: 80%;
+		}
+
+		.stats-info{
+			padding: 10px;
+		}
+
+		.stats-action{
+		}
+
+		.modal-header{
+			background-color: #292929;
+			color: #fff;
+		}
+
+	</style>
+</head>
+<body>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Bid Now</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Bid Now</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+	<div class="row" style="margin-top: 4%;">
+		<div class="col-md-4">
+            <div class="product-container">
+                <div class="product-image">
+                    <span class="hover-link"></span>
+                	<a href="#" class="product-link" id="bidNow" name="" data-toggle="modal" data-target="#myModal">Bid Now</a>
+                	<img src="https://www.notebookcheck.net/uploads/tx_nbc2/lenovo-laptop-y50-front-1_01.jpg" alt="Product">
+                </div>
+                <div class="timer-here">
+                	<!-- <div class="clock1" style="margin:2em; position: relative; right: -100px;"></div> -->
+                	<ul class="bid-timer" id="clock1">
+				        <li><span class="days">00</span>
+				        </li>
+				        <li class="seperator">:</li>
+				        <li><span class="hours">00</span>
+				        </li>
+				        <li class="seperator">:</li>
+				        <li><span class="minutes">00</span>
+				        </li>
+				        <li class="seperator">:</li>
+				        <li><span class="seconds">00</span>
+				        </li>
+				    </ul>
+                </div>
+                <div class="product-description">
+                    <div class="product-label">
+                        <div class="product-name">
+                            <!-- <h1>Lenovo Y50</h1> -->
+                            <div class="row">
+                            	<div class="col-md-6 col-xs-6" style="padding: 0; text-align: center">
+                            		<strong>Current Bid <i class="fa fa-stop fa-fw" title="Stops on"></i> $ 12.5</strong>	
+                            	</div>
+                            	<div class="col-md-6 col-xs-6" style="padding: 0; text-align: center">
+                            		<strong>Bid Increment: <i class="fa fa-plus-square fa-fw"></i> $ 12.5</strong>
+                            	</div>
+                            </div>
+                            <br>
+                            <!-- <p class="price" title="Current Bid">{{currency}} {{currentBid}}</p> -->
+                            
+                        	<small style="font-size: 12px;">Ends: 12-May-2018</small>
+                        	
+                        </div>
+                    </div>
+                    <div class="product-option">
+                        <div class="product-size">
+                        	<h3>Lenovo Y50</h3>
+                            <h5>Starting Bid <i class="fa fa-play fa-fw" title="Starts Bidding From"></i> $ 12.5 </h5>
+                            <!-- <br><span>Current Bid <i class="fa fa-stop fa-fw" title="Stops on"></i> $ 12.5</span></h3> -->
+                            <!-- <p>Bid Increment: <i class="fa fa-plus-square fa-fw"></i> $ 12.5</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="product-container">
+                <div class="product-image">
+                    <span class="hover-link"></span>
+                	<a href="#" class="product-link" id="bidNow" name="" data-toggle="modal" data-target="#myModal">Bid Now</a>
+                	<img src="http://static.digit.in/product/0e683ea39f9c93aae12458f517d6377df0110873.jpeg" alt="Product">
+                </div>
+                <div class="timer-here">
+                	<ul class="bid-timer" id="clock2">
+				        <li><span class="days">00</span>
+				        </li>
+				        <li class="seperator">:</li>
+				        <li><span class="hours">00</span>
+				        </li>
+				        <li class="seperator">:</li>
+				        <li><span class="minutes">00</span>
+				        </li>
+				        <li class="seperator">:</li>
+				        <li><span class="seconds">00</span>
+				        </li>
+				    </ul>
+                </div>
+                <div class="product-description">
+                    <div class="product-label">
+                        <div class="product-name">
+                            <!-- <h1>Lenovo Y50</h1> -->
+                            <div class="row">
+                            	<div class="col-md-6 col-xs-6" style="padding: 0; text-align: center">
+                            		<strong>Current Bid <i class="fa fa-stop fa-fw" title="Stops on"></i> $ 12.5</strong>	
+                            	</div>
+                            	<div class="col-md-6 col-xs-6" style="padding: 0; text-align: center">
+                            		<strong>Bid Increment: <i class="fa fa-plus-square fa-fw"></i> $ 12.5</strong>
+                            	</div>
+                            </div>
+                            <br>
+                            <!-- <p class="price" title="Current Bid">{{currency}} {{currentBid}}</p> -->
+                            
+                        	<small style="font-size: 12px;">Ends: 12-May-2018</small>
+                        	
+                        </div>
+                    </div>
+                    <div class="product-option">
+                        <div class="product-size">
+                        	<h3>Dell Alienware</h3>
+                            <h5>Starting Bid <i class="fa fa-play fa-fw" title="Starts Bidding From"></i> $ 12.5 </h5>
+                            <!-- <br><span>Current Bid <i class="fa fa-stop fa-fw" title="Stops on"></i> $ 12.5</span></h3> -->
+                            <!-- <p>Bid Increment: <i class="fa fa-plus-square fa-fw"></i> $ 12.5</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="product-container">
+                <div class="product-image">
+                    <span class="hover-link"></span>
+                	<a href="#" class="product-link" id="bidNow" name="" data-toggle="modal" data-target="#myModal">Bid Now</a>
+                	<img src="https://cdn.macrumors.com/article-new/2014/11/macbook_air_yosemite-800x450.jpg" alt="Product">
+                </div>
+                <div class="timer-here">
+                	<ul class="bid-timer" id="clock3">
+				        <li><span class="days">00</span>
+				        </li>
+				        <li class="seperator">:</li>
+				        <li><span class="hours">00</span>
+				        </li>
+				        <li class="seperator">:</li>
+				        <li><span class="minutes">00</span>
+				        </li>
+				        <li class="seperator">:</li>
+				        <li><span class="seconds">00</span>
+				        </li>
+				    </ul>
+                </div>
+                <div class="product-description">
+                    <div class="product-label">
+                        <div class="product-name">
+                            <!-- <h1>Lenovo Y50</h1> -->
+                            <div class="row">
+                            	<div class="col-md-6 col-xs-6" style="padding: 0; text-align: center">
+                            		<strong>Current Bid <i class="fa fa-stop fa-fw" title="Stops on"></i> $ 12.5</strong>	
+                            	</div>
+                            	<div class="col-md-6 col-xs-6" style="padding: 0; text-align: center">
+                            		<strong>Bid Increment: <i class="fa fa-plus-square fa-fw"></i> $ 12.5</strong>
+                            	</div>
+                            </div>
+                            <br>
+                            <!-- <p class="price" title="Current Bid">{{currency}} {{currentBid}}</p> -->
+                            
+                        	<small style="font-size: 12px;">Ends: 12-May-2018</small>
+                        	
+                        </div>
+                    </div>
+                    <div class="product-option">
+                        <div class="product-size">
+                        	<h3>Apple MacBook Air</h3>
+                            <h5>Starting Bid <i class="fa fa-play fa-fw" title="Starts Bidding From"></i> $ 12.5 </h5>
+                            <!-- <br><span>Current Bid <i class="fa fa-stop fa-fw" title="Stops on"></i> $ 12.5</span></h3> -->
+                            <!-- <p>Bid Increment: <i class="fa fa-plus-square fa-fw"></i> $ 12.5</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+
+	<!-- <div class="row" style="margin-top: 4%;">
+		<div class="col-md-4">
+            <div class="product-container">
+                <div class="product-image">
+                    <span class="hover-link"></span>
+                    <div class="col-md-6" style="padding: 0; margin: 0;"><button class="btn btn-primary btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post">Edit Bid</button></div>
+                    <div class="col-md-6" style="padding: 0; margin: 0;"><button class="btn btn-danger btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post">Delete Bid</button></div>
+                	<img src="https://cdn.macrumors.com/article-new/2014/11/macbook_air_yosemite-800x450.jpg" alt="Product">
+                </div>
+                <div class="timer-here">
+                	<div class="clock" style="margin:2em; position: relative; right: -100px;"></div>
+                </div>
+                <div class="product-description">
+                    <div class="product-label">
+                        <div class="product-name">
+                            <h1>Apple MacBook Air</h1>
+                            <br>
+                            
+                            
+                            	<small style="font-size: 12px;">Ends: 12-May-2018</small>
+                        	
+                        </div>
+                    </div>
+                    <div class="product-option">
+                        <div class="product-size">
+                            <h3>Starting Bid <i class="fa fa-play fa-fw" title="Starts Bidding From"></i> $ 12.5 
+                            <br><span>Current Bid <i class="fa fa-stop fa-fw" title="Stops on"></i> $ 12.5</span></h3>
+                            <p>Bid Increment: <i class="fa fa-plus-square fa-fw"></i> $ 12.5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="product-container">
+                <div class="product-image">
+                    <span class="hover-link"></span>
+                    <div class="col-md-6" style="padding: 0; margin: 0;"><button class="btn btn-primary btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post">Edit Bid</button></div>
+                    <div class="col-md-6" style="padding: 0; margin: 0;"><button class="btn btn-danger btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post">Delete Bid</button></div>
+                	
+                	<img src="http://static.digit.in/product/0e683ea39f9c93aae12458f517d6377df0110873.jpeg" alt="Product">
+                </div>
+                <div class="timer-here">
+                	<div class="clock" style="margin:2em; position: relative; right: -100px;"></div>
+                </div>
+                <div class="product-description">
+                    <div class="product-label">
+                        <div class="product-name">
+                            <h1>Dell Alienware</h1>
+                            <br>
+                            
+                            
+                            	<small style="font-size: 12px;">Ends: 12-May-2018</small>
+                        	
+                        </div>
+                    </div>
+                    <div class="product-option">
+                        <div class="product-size">
+                            <h3>Starting Bid <i class="fa fa-play fa-fw" title="Starts Bidding From"></i> $ 12.5 
+                            <br><span>Current Bid <i class="fa fa-stop fa-fw" title="Stops on"></i> $ 12.5</span></h3>
+                            <p>Bid Increment: <i class="fa fa-plus-square fa-fw"></i> $ 12.5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="product-container">
+                <div class="product-image">
+                    <span class="hover-link"></span>
+                    <div class="col-md-6" style="padding: 0; margin: 0;"><button class="btn btn-primary btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post">Edit Bid</button></div>
+                    <div class="col-md-6" style="padding: 0; margin: 0;"><button class="btn btn-danger btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post">Delete Bid</button></div>
+                	
+                	<img src="https://www.notebookcheck.net/uploads/tx_nbc2/lenovo-laptop-y50-front-1_01.jpg" alt="Product">
+                </div>
+                <div class="timer-here">
+                	
+                	
+                </div>
+                <div class="product-description">
+                    <div class="product-label">
+                        <div class="product-name">
+                            <h1>Lenovo Y50</h1>
+                            <br>
+                            
+                            
+                            	<small style="font-size: 12px;">Ends: 12-May-2018</small>
+                        	
+                        </div>
+                    </div>
+                    <div class="product-option">
+                        <div class="product-size">
+                            <h3>Starting Bid <i class="fa fa-play fa-fw" title="Starts Bidding From"></i> $ 12.5 
+                            <br><span>Current Bid <i class="fa fa-stop fa-fw" title="Stops on"></i> $ 12.5</span></h3>
+                            <p>Bid Increment: <i class="fa fa-plus-square fa-fw"></i> $ 12.5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div> -->
+
+
+	<div class="row" style="margin-top: 4%;">
+		<div class="col-md-4">
+			<div class="stats-card">
+				<div class="stats">
+					<div class="row">
+						<div class="col-xs-3">
+							<h3 class="round-stat">12</h3>
+							<small>Bidders</small>
+						</div>
+						<div class="col-xs-3">
+							<h3 class="round-stat">150.5</h3>
+							<small>Current Bid</small>
+						</div>
+						<div class="col-xs-3">
+							<h3 class="round-stat">1.50</h3>
+							<small>Increment</small>
+						</div>
+						<div class="col-xs-3">
+							<h3 class="round-stat">100</h3>
+							<small>Starting Bid</small>
+						</div>
+					</div>
+				</div>
+				<div class="stats-info">
+					<h3>Lenovo Y50</h3>
+					<p>Ends on: 12-May-2017</p>
+				</div>
+				<div class="stats-action">
+					<div class="col-md-5 col-xs-5" style="padding: 0; margin: 0;"><button class="btn btn-danger btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post">End Bid</button></div>
+                	<div class="col-md-5 col-xs-5" style="padding: 0; margin: 0;"><button class="btn btn-primary btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post">View Bid</button></div>
+                	<div class="col-md-2 col-xs-2" style="padding: 0; margin: 0;"><button class="btn btn-warning btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post"><i class="fa fa-cog"></i></button></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="stats-card">
+				<div class="stats">
+					<div class="row">
+						<div class="col-xs-3">
+							<h3 class="round-stat">12</h3>
+							<small>Bidders</small>
+						</div>
+						<div class="col-xs-3">
+							<h3 class="round-stat">150.5</h3>
+							<small>Current Bid</small>
+						</div>
+						<div class="col-xs-3">
+							<h3 class="round-stat">1.50</h3>
+							<small>Increment</small>
+						</div>
+						<div class="col-xs-3">
+							<h3 class="round-stat">100</h3>
+							<small>Starting Bid</small>
+						</div>
+					</div>
+				</div>
+				<div class="stats-info">
+					<h3>Dell Alienware</h3>
+					<p>Ends on: 12-May-2017</p>
+				</div>
+				<div class="stats-action">
+					<div class="col-md-5 col-xs-5" style="padding: 0; margin: 0;"><button class="btn btn-danger btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post">End Bid</button></div>
+                	<div class="col-md-5 col-xs-5" style="padding: 0; margin: 0;"><button class="btn btn-primary btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post">View Bid</button></div>
+                	<div class="col-md-2 col-xs-2" style="padding: 0; margin: 0;"><button class="btn btn-warning btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post"><i class="fa fa-cog"></i></button></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="stats-card">
+				<div class="stats">
+					<div class="row">
+						<div class="col-xs-3">
+							<h3 class="round-stat">12</h3>
+							<small>Bidders</small>
+						</div>
+						<div class="col-xs-3">
+							<h3 class="round-stat">150.5</h3>
+							<small>Current Bid</small>
+						</div>
+						<div class="col-xs-3">
+							<h3 class="round-stat">1.50</h3>
+							<small>Increment</small>
+						</div>
+						<div class="col-xs-3">
+							<h3 class="round-stat">100</h3>
+							<small>Starting Bid</small>
+						</div>
+					</div>
+				</div>
+				<div class="stats-info">
+					<h3>Apple MacBook Air</h3>
+					<p>Ends on: 12-May-2017</p>
+				</div>
+				<div class="stats-action">
+					<div class="col-md-5 col-xs-5" style="padding: 0; margin: 0;"><button class="btn btn-danger btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post">End Bid</button></div>
+                	<div class="col-md-5 col-xs-5" style="padding: 0; margin: 0;"><button class="btn btn-primary btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post">View Bid</button></div>
+                	<div class="col-md-2 col-xs-2" style="padding: 0; margin: 0;"><button class="btn btn-warning btn-block" style="border-radius: 0; font-style: normal;" buttonContent="Edit post"><i class="fa fa-cog"></i></button></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="assets/countdown/jquery.countdown.min.js"></script>
+
+<script type="text/javascript">
+	$('#clock1').countdown({
+            date: '5/26/2017 17:00:00',
+            offset: 5.50,
+            day: 'Day',
+            days: 'Days'
+        }, function() {
+            alert('Done!');
+    });
+
+    $('#clock2').countdown({
+            date: '5/29/2017 17:00:00',
+            offset: 5.50,
+            day: 'Day',
+            days: 'Days'
+        }, function() {
+            alert('Done!');
+    });
+
+    $('#clock3').countdown({
+            date: '9/26/2017 17:00:00',
+            offset: 5.50,
+            day: 'Day',
+            days: 'Days'
+        }, function() {
+            alert('Done!');
+    });
+</script>
+</body>
+</html>
